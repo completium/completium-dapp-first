@@ -27,14 +27,14 @@ function App() {
           <Grid container spacing={3}>
             <Grid item xs={12}>
               <Typography
-                variant="h1"
+                variant="h2"
                 style={{ color: theme.palette.text.primary, fontFamily : 'Alegreya Sans SC, sans-serif' }}
               >
                 Completium
               </Typography>
             </Grid>
             <Grid item xs={12}>
-              <Typography variant="h5" style={{ color: theme.palette.text.primary }}>
+              <Typography variant="h6" style={{ color: theme.palette.text.primary }}>
                 Edit <code>src/App.js</code> and save to reload.
               </Typography>
             </Grid>
@@ -44,7 +44,7 @@ function App() {
                 target="_blank" rel="noopener noreferrer"
                 style={{ color: theme.palette.primary.light }}
               >
-                <Typography variant="h5">
+                <Typography variant="h6">
                   Learn everything about DApps
                 </Typography>
               </Link>
