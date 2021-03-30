@@ -1,5 +1,5 @@
 import './App.css';
-import React from 'react';
+import React, { useState } from 'react';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import { DAppProvider } from './dappstate.js';
@@ -7,8 +7,10 @@ import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 import { appName } from './settings';
+import ConfirmSnack from './components/ConfirmSnack';
 
 function App() {
+  const [viewSnack, setViewSnack] = useState(false);
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
   const theme = React.useMemo(
     () =>
@@ -19,6 +21,12 @@ function App() {
       }),
     [prefersDarkMode],
   );
+  const openSnack = () => {
+    setViewSnack(true);
+  }
+  const closeSnack = () => {
+    setViewSnack(false);
+  }
   return (
     <DAppProvider appName={appName}>
       <ThemeProvider theme={theme}>
@@ -52,6 +60,7 @@ function App() {
           </Grid>
         </header>
       </div>
+      <ConfirmSnack open={viewSnack} />
       </ThemeProvider>
     </DAppProvider>
   );
