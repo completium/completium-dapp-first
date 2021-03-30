@@ -2,12 +2,11 @@ import './App.css';
 import React from 'react';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
-import { DAppProvider /*, useConnect, useAccountPkh, useReady*/ } from './dappstate.js';
+import { DAppProvider } from './dappstate.js';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 import { appName } from './settings';
-import WalletButton from './components/WalletButton';
 
 function App() {
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
