@@ -1,5 +1,11 @@
 image:
   file: Dockerfile
+tasks:
+- init: npm install
+  command: npm start
+ports:
+- port: 3000
+  onOpen: open-browser
 github:
   prebuilds:
     # enable for the master/default branch (defaults to true)
