@@ -7,6 +7,7 @@ import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 import { appName } from './settings';
+import OwnershipView from './components/OwnershipView';
 
 function App() {
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
@@ -27,6 +28,9 @@ function App() {
           <Grid container spacing={3}>
             <Grid item xs={12}>
               <Typography variant="h1" style={{ fontFamily : 'Alegreya Sans SC, sans-serif' }}>Completium</Typography>
+            </Grid>
+            <Grid item xs={12}>
+              <OwnershipView />
             </Grid>
             <Grid item xs={12}>
               <Typography variant="h5">
