@@ -9,6 +9,7 @@ import Grid from '@material-ui/core/Grid';
 import { appName } from './settings';
 import Snack from './components/Snack';
 import { SnackProvider } from './snackstate';
+import WalletButton from './components/WalletButton';
 
 function App() {
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
