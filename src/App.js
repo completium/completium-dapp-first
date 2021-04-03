@@ -6,7 +6,7 @@ import { DAppProvider } from './dappstate.js';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
-import { appName } from './settings';
+import { appName, alegreya } from './settings';
 import Snack from './components/Snack';
 import { SnackProvider } from './snackstate';
 import WalletButton from './components/WalletButton';
