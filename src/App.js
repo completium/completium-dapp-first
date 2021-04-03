@@ -2,13 +2,16 @@ import './App.css';
 import React from 'react';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
-import { DAppProvider } from './dappstate.js';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
+
+import { DAppProvider } from './dappstate';
+import { SnackProvider } from './snackstate';
 import { appName, alegreya } from './settings';
 import Snack from './components/Snack';
-import { SnackProvider } from './snackstate';
 import WalletButton from './components/WalletButton';
 
 function App() {
@@ -26,8 +29,9 @@ function App() {
     <DAppProvider appName={appName}>
       <SnackProvider>
       <ThemeProvider theme={theme}>
+      <CssBaseline />
       <div className="App">
-        <header className="App-header" style={{ backgroundColor: theme.palette.background.default }}>
+        <Container>
           <Grid container spacing={3}>
             <Grid item xs={12}>
               <Typography variant="h2" style={{ fontFamily : alegreya }}>
@@ -51,7 +55,7 @@ function App() {
               </Link>
             </Grid>
           </Grid>
-        </header>
+        </Container>
       </div>
       <Snack />
       </ThemeProvider>
