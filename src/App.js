@@ -26,9 +26,9 @@ function App() {
     [prefersDarkMode],
   );
   return (
-    <DAppProvider appName={appName}>
+    <DAppProvider appName={ appName }>
       <SnackProvider>
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={ theme }>
       <CssBaseline />
       <div className="App">
         <Container>
