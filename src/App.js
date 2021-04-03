@@ -30,15 +30,12 @@ function App() {
         <header className="App-header" style={{ backgroundColor: theme.palette.background.default }}>
           <Grid container spacing={3}>
             <Grid item xs={12}>
-              <Typography
-                variant="h2"
-                style={{ color: theme.palette.text.primary, fontFamily : 'Alegreya Sans SC, sans-serif' }}
-              >
+              <Typography variant="h2" style={{ fontFamily : alegreya }}>
                 Completium
               </Typography>
             </Grid>
             <Grid item xs={12}>
-              <Typography variant="h6" style={{ color: theme.palette.text.primary }}>
+              <Typography variant="h6">
                 Edit <code>src/App.js</code> and save to reload.
               </Typography>
             </Grid>
