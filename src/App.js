@@ -31,7 +31,7 @@ function App() {
       <ThemeProvider theme={ theme }>
       <CssBaseline />
       <div className="App">
-        <Container>
+        <Container style={{ marginTop: 50 }}>
           <Grid container spacing={3}>
             <Grid item xs={12}>
               <Typography variant="h2" style={{ fontFamily : alegreya }}>
