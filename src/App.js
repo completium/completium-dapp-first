@@ -14,10 +14,6 @@ import { appName, alegreya } from './settings';
 import Snack from './components/Snack';
 import WalletButton from './components/WalletButton';
 
-/* FIXME: Step 6.1 */
-
-/* FIXME: step 4.1 */
-
 /* FIXME: Step 3.1 */
 
 function App() {
