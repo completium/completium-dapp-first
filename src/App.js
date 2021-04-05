@@ -14,6 +14,12 @@ import { appName, alegreya } from './settings';
 import Snack from './components/Snack';
 import WalletButton from './components/WalletButton';
 
+/* FIXME: Step 6.1 */
+
+/* FIXME: step 4.1 */
+
+/* FIXME: Step 3.1 */
+
 function App() {
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
   const theme = React.useMemo(
@@ -33,6 +39,7 @@ function App() {
       <div className="App">
         <Container style={{ marginTop: 50 }}>
           <Grid container spacing={3}>
+            { /* FIXME: Step 3.2 Start */ }
             <Grid item xs={12}>
               <Typography variant="h2" style={{ fontFamily : alegreya }}>
                 Completium
@@ -54,6 +61,13 @@ function App() {
                 </Typography>
               </Link>
             </Grid>
+            { /* FIXME: Step 3.2 End */ }
+
+            { /* FIXME: Step 4.2 */ }
+
+            { /* FIXME: Step 6.2 */ }
+
+            { /* FIXME: Step 4.3 */ }
           </Grid>
         </Container>
       </div>
