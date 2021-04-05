@@ -14,7 +14,20 @@ import { appName, alegreya } from './settings';
 import Snack from './components/Snack';
 import WalletButton from './components/WalletButton';
 
+import { TezosToolkit } from '@taquito/taquito';
+import { endpoint, contractAddress, courier } from './settings.js';
+import { useState } from 'react';
+
+import Button from '@material-ui/core/Button';
+import { useTezos, useAccountPkh } from './dappstate';
+import { useSnackContext } from './snackstate';
+import { UnitValue } from '@taquito/taquito';
+
 /* FIXME: Step 3.1 */
+
+/* FIXME: step 4.1 */
+
+/* FIXME: Step 6.1 */
 
 function App() {
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
