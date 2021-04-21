@@ -10,12 +10,13 @@ import Grid from '@material-ui/core/Grid';
 
 import { DAppProvider } from './dappstate';
 import { SnackProvider } from './snackstate';
-import { appName, alegreya } from './settings';
+import { appName, alegreya, courier } from './settings';
 import Snack from './components/Snack';
 import WalletButton from './components/WalletButton';
+import { SettingsPanel } from './components/Settings';
 
 import { TezosToolkit } from '@taquito/taquito';
-import { endpoint, contractAddress, courier } from './settings.js';
+import { SettingsProvider, useSettingsContext } from './settings.js';
 import { useState } from 'react';
 
 import Button from '@material-ui/core/Button';
@@ -42,7 +43,8 @@ function App() {
   );
   return (
     <DAppProvider appName={ appName }>
-      <SnackProvider>
+    <SettingsProvider>
+    <SnackProvider>
       <ThemeProvider theme={ theme }>
       <CssBaseline />
       <div className="App">
@@ -80,9 +82,11 @@ function App() {
           </Grid>
         </Container>
       </div>
+      <SettingsPanel/>
       <Snack />
       </ThemeProvider>
-      </SnackProvider>
+    </SnackProvider>
+    </SettingsProvider>
     </DAppProvider>
   );
 }
