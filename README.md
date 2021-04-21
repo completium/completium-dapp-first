@@ -7,7 +7,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
   * network
   * endpoint
 
-Settings data is managed as global storage by [constate](https://www.npmjs.com/package/constate). The settings panel is used in the [Idrea Box](https://completium.com/docs/dapp-ideabox/) DApp.
+Settings data is managed as global storage by [constate](https://www.npmjs.com/package/constate). The settings panel is used in the [Idea Box](https://completium.com/docs/dapp-ideabox/) DApp.
 
 ## Available Scripts
 
