@@ -1,6 +1,13 @@
-# Getting Started with Create React App
+# Getting Started with [Completium](https://completium.com/) React DApp
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and augmented with DApp's widgets:
+* A [button](./src/components/WalletButton.js) to connect to [Temple](https://templewallet.com/) wallet
+* A [settings panel](./src/components/Settings.js) to set:
+  * contract id
+  * network
+  * endpoint
+
+Settings data is managed as global storage by [constate](https://www.npmjs.com/package/constate). The settings panel is used in the [Idrea Box](https://completium.com/docs/dapp-ideabox/) DApp.
 
 ## Available Scripts
 
