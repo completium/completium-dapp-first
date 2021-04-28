@@ -4,8 +4,8 @@ import constate from "constate";
 export function useSettings() {
 
   const [settings,setState] = useState({
-    network  : 'edo2net',
-    endpoint : 'https://edonet.smartpy.io',
+    network  : 'florencenet',
+    endpoint : 'https://florencenet.smartpy.io',
     contract : '',
     show     : false,
   });
