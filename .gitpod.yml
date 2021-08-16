@@ -26,5 +26,5 @@ github:
     addLabel: false
 vscode:
   extensions:
-    - edukera.archetype@0.38.0
+    - edukera.archetype
     - baking-bad.michelson@0.1.0
