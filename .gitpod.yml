@@ -1,13 +1,7 @@
 image:
   file: Dockerfile
 tasks:
-- init: npm i @completium/completium-cli@latest -g && \
-completium-cli init && \
-completium-cli install \
-bin archetype && \
-completium-cli import faucet admin.json as admin && \
-completium-cli set account admin && \
-sudo ln -s /home/gitpod/.completium/bin/archetype /usr/local/bin/ && npm install
+- init: npm i @completium/completium-cli@latest -g && completium-cli init && completium-cli install bin archetype && completium-cli import faucet admin.json as admin && completium-cli set account admin && sudo ln -s /home/gitpod/.completium/bin/archetype /usr/local/bin/ && npm install
   command: npm start
 ports:
 - port: 3000
