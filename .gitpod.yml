@@ -28,3 +28,8 @@ vscode:
   extensions:
     - edukera.archetype
     - baking-bad.michelson@0.1.0
+
+tasks:
+  - openMode: tab-after
+    command: |-
+      clear && npm i @completium/completium-cli@latest -g
