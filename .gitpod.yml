@@ -1,7 +1,7 @@
 image:
   file: Dockerfile
 tasks:
-- init: npm install
+- init: npm i @completium/completium-cli@latest -g && npm install
   command: npm start
 ports:
 - port: 3000
@@ -28,8 +28,3 @@ vscode:
   extensions:
     - edukera.archetype
     - baking-bad.michelson@0.1.0
-
-tasks:
-  - openMode: tab-after
-    command: |-
-      clear && npm i @completium/completium-cli@latest -g
