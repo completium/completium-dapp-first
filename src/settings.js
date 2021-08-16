@@ -4,8 +4,8 @@ import constate from "constate";
 export function useSettings() {
 
   const [settings,setState] = useState({
-    network  : 'florencenet',
-    endpoint : 'https://florencenet.smartpy.io',
+    network  : 'granadanet',
+    endpoint : 'https://granadanet.smartpy.io',
     contract : '',
     show     : false,
   });
