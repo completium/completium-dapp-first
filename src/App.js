@@ -24,11 +24,89 @@ import { useTezos, useAccountPkh } from './dappstate';
 import { useSnackContext } from './snackstate';
 import { UnitValue } from '@taquito/taquito';
 
-/* FIXME: Step 3.1 */
+const Cell = (props) => {
+  return (<Grid item xs={6}><Typography align="left" variant="subtitle2"
+    style={ props.data ? { fontFamily: courier } : { } }> { props.val }
+  </Typography></Grid>)
+}
 
-/* FIXME: step 4.1 */
+const OwnershipData = (props) => {
+  const { settings } = useSettingsContext();
+  const [{ assetid, owner, forsale }, setData] = useState(() => ({
+      assetid : "",
+      owner   : "",
+      forsale : "",
+    }));
+  const loadStorage = React.useCallback(async () => {
+    const tezos     = new TezosToolkit(settings.endpoint);
+    const contract  = await tezos.contract.at(settings.contract);
+    const storage   = await contract.storage();
+    console.log(storage);
+    setData({
+      assetid : storage.assetid,
+      owner   : storage.owner,
+      forsale : storage._state.toNumber() > 0 ? "For Sale" : "Not For Sale",
+    });
+  }, [assetid, owner, forsale]);
+  if (assetid === "") loadStorage();
+  return (
+    <Container maxWidth='xs'>
+    <Grid container direction="row" alignItems="center" spacing={1}>
+      <Cell val="Asset Id"/><Cell val={ assetid.substring(0, 20) + "..." } data/>
+      <Cell val="Owner"   /><Cell val={ owner.substring(0, 20) + "..." } data/>
+      <Cell val="Status"  /><Cell val={ forsale }/>
+    </Grid>
+    </Container>
+  );
+}
 
-/* FIXME: Step 6.1 */
+const BidButton = () => {
+  const tezos = useTezos();
+  const account = useAccountPkh();
+  const { settings } = useSettingsContext();
+  const { setInfoSnack, setErrorSnack, hideSnack } = useSnackContext();
+  const bid = async () => {
+    try {
+      const contract  = await tezos.wallet.at(contract);
+      const operation = await contract.methods.bid(UnitValue).send({ amount: 10 });
+      const shorthash = operation.opHash.substring(0, 10) + "...";
+      setInfoSnack(`waiting for ${ shorthash } to be confirmed ...`);
+      await operation.receipt();
+      hideSnack();
+    } catch (error) {
+      setErrorSnack(error.message);
+      setTimeout(hideSnack, 4000);
+    }
+  }
+  return (
+    <Button onClick={ bid } variant="outlined" disabled={ account === null }>
+      post bid
+    </Button>);
+}
+
+const ClaimButton = () => {
+  const { settings } = useSettingsContext();
+  const tezos = useTezos();
+  const account = useAccountPkh();
+  const { setInfoSnack, setErrorSnack, hideSnack } = useSnackContext();
+  const claim = async () => {
+    try {
+      const contract  = await tezos.wallet.at(settings.contract);
+      const operation = await contract.methods.claim(UnitValue).send();
+      const shorthash = operation.opHash.substring(0, 10) + "...";
+      setInfoSnack(`waiting for ${ shorthash } to be confirmed ...`);
+      await operation.receipt();
+      hideSnack();
+    } catch (error) {
+      setErrorSnack(error.message);
+      setTimeout(hideSnack, 4000);
+    }
+  }
+  return (
+    <Button onClick={ claim } variant="outlined" disabled={ account === null }>
+      Claim
+    </Button>);
+}
 
 function App() {
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
@@ -43,50 +121,33 @@ function App() {
   );
   return (
     <DAppProvider appName={ appName }>
-    <SettingsProvider>
-    <SnackProvider>
+      <SettingsProvider>
+      <SnackProvider>
       <ThemeProvider theme={ theme }>
       <CssBaseline />
       <div className="App">
         <Container style={{ marginTop: 50 }}>
           <Grid container spacing={3}>
-            { /* FIXME: Step 3.2 Start */ }
             <Grid item xs={12}>
-              <Typography variant="h2" style={{ fontFamily : alegreya }}>
-                Completium
-              </Typography>
+                <OwnershipData />
             </Grid>
             <Grid item xs={12}>
-              <Typography variant="h6">
-                Edit <code>src/App.js</code> and save to reload.
-              </Typography>
+                <BidButton />
             </Grid>
             <Grid item xs={12}>
-              <Link
-                href="https://completium.com/dapps"
-                target="_blank" rel="noopener noreferrer"
-                style={{ color: theme.palette.primary.light }}
-              >
-                <Typography variant="h6">
-                  Learn everything about DApps
-                </Typography>
-              </Link>
+                <ClaimButton />
             </Grid>
-            { /* FIXME: Step 3.2 End */ }
-
-            { /* FIXME: Step 4.2 */ }
-
-            { /* FIXME: Step 6.2 */ }
-
-            { /* FIXME: Step 4.3 */ }
+            <Grid item xs={12}>
+                <WalletButton />
+            </Grid>
           </Grid>
         </Container>
       </div>
       <SettingsPanel/>
       <Snack />
       </ThemeProvider>
-    </SnackProvider>
-    </SettingsProvider>
+      </SnackProvider>
+      </SettingsProvider>
     </DAppProvider>
   );
 }

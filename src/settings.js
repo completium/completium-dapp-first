@@ -6,7 +6,7 @@ export function useSettings() {
   const [settings,setState] = useState({
     network  : 'granadanet',
     endpoint : 'https://granadanet.smartpy.io',
-    contract : '',
+    contract : 'KT1WxUiPL1kG8pRUerL52H3qkbHjXpwnoDHo',
     show     : false,
   });
 
