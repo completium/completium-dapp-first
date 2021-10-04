@@ -1,6 +1,6 @@
 import React from 'react';
 import constate from 'constate';
-import { ThanosWallet } from '@thanos-wallet/dapp';
+import { KukaiEmbed, Networks } from 'kukai-embed';
 
 export const [
   DAppProvider,
@@ -27,39 +27,47 @@ function useDApp({ appName }) {
 
   const ready = Boolean(tezos);
 
-  React.useEffect(() => {
-    return ThanosWallet.onAvailabilityChange((available) => {
-      setState({
-        wallet: available ? new ThanosWallet(appName) : null,
-        tezos: null,
-        accountPkh: null,
-      });
-    });
-  }, [setState, appName]);
+  const walletKukai = new KukaiEmbed({
+    // net: "https://granadanet.smartpy.io",
+    net: Networks.mainnet,
+    icon: true
+  });
+
+  // React.useEffect(() => {
+  //   setState({
+  //     wallet: new KukaiEmbed({
+  //       net: "https://granadanet.smartpy.io",
+  //       icon: true
+  //     }),
+  //     tezos: null,
+  //     accountPkh: null,
+  //   });
+  // }, [setState, appName]);
 
   const connect = React.useCallback(
     async (network, opts) => {
       try {
-        if (!wallet) {
-          throw new Error('Thanos Wallet not available');
+        if (!walletKukai) {
+          throw new Error('Kukai Wallet not available');
         }
-        await wallet.connect(network, opts);
-        const tzs = wallet.toTezos();
-        const pkh = await tzs.wallet.pkh();
+        await walletKukai.init();
+        await walletKukai.login();
+        const pkh = walletKukai.user().pkh;
+        console.log(`pkh: ${pkh}`);
         setState({
-          wallet,
-          tezos: tzs,
+          walletKukai,
+          tezos: null,
           accountPkh: pkh,
         });
       } catch (err) {
         alert(`Failed to connect ThanosWallet: ${err.message}`);
       }
     },
-    [setState, wallet]
+    [setState, walletKukai]
   );
 
   return {
-    wallet,
+    walletKukai,
     tezos,
     accountPkh,
     ready,

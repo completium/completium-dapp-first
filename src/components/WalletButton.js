@@ -9,7 +9,7 @@ const WalletButton = (props) => {
   const theme = useTheme();
   const ready = useReady();
   const wallet = useWallet();
-  const connect= useConnect();
+  const connect = useConnect();
   const { settings } = useSettingsContext();
   const handleConnect = React.useCallback(async () => {
     try {
@@ -19,25 +19,12 @@ const WalletButton = (props) => {
     };
   }, [connect]);
   return ((ready) ? (
-        <div></div>
-      ) :(wallet ? (
-          <Button variant="outlined"
-            color={theme.palette.text.primary}
-            onClick={handleConnect}>
-            connect to wallet
-          </Button>
-        ):(
-          <Link href="https://templewallet.com/" rel="noopener" underline="none">
-            <Button variant="contained" disableElevation
-              style={{
-                backgroundColor: '#ed8936',
-                color: 'white',
-                fontWeight: 'bold',
-                }}>
-              install Temple
-            </Button>
-          </Link>
-      )));
+    <div></div>
+  ) : (<Button variant="outlined"
+    color={theme.palette.text.primary}
+    onClick={handleConnect}>
+    connect to wallet
+  </Button>));
 }
 
 export default WalletButton;
