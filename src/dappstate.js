@@ -1,6 +1,6 @@
 import React from 'react';
 import constate from 'constate';
-import { ThanosWallet } from '@thanos-wallet/dapp';
+import { TempleWallet } from "@temple-wallet/dapp";
 
 export const [
   DAppProvider,
@@ -28,9 +28,9 @@ function useDApp({ appName }) {
   const ready = Boolean(tezos);
 
   React.useEffect(() => {
-    return ThanosWallet.onAvailabilityChange((available) => {
+    return TempleWallet.onAvailabilityChange((available) => {
       setState({
-        wallet: available ? new ThanosWallet(appName) : null,
+        wallet: available ? new TempleWallet(appName) : null,
         tezos: null,
         accountPkh: null,
       });
