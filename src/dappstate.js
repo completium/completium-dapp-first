@@ -1,6 +1,6 @@
 import React from 'react';
 import constate from 'constate';
-import { ThanosWallet } from '@thanos-wallet/dapp';
+import { TempleWallet } from '@temple-wallet/dapp';
 
 export const [
   DAppProvider,
@@ -28,9 +28,9 @@ function useDApp({ appName }) {
   const ready = Boolean(tezos);
 
   React.useEffect(() => {
-    return ThanosWallet.onAvailabilityChange((available) => {
+    return TempleWallet.onAvailabilityChange((available) => {
       setState({
-        wallet: available ? new ThanosWallet(appName) : null,
+        wallet: available ? new TempleWallet(appName) : null,
         tezos: null,
         accountPkh: null,
       });
@@ -41,7 +41,7 @@ function useDApp({ appName }) {
     async (network, opts) => {
       try {
         if (!wallet) {
-          throw new Error('Thanos Wallet not available');
+          throw new Error('Temple Wallet not available');
         }
         await wallet.connect(network, opts);
         const tzs = wallet.toTezos();
@@ -52,7 +52,7 @@ function useDApp({ appName }) {
           accountPkh: pkh,
         });
       } catch (err) {
-        alert(`Failed to connect ThanosWallet: ${err.message}`);
+        alert(`Failed to connect TempleWallet: ${err.message}`);
       }
     },
     [setState, wallet]
