@@ -5,7 +5,7 @@ export function useSettings() {
 
   const [settings,setState] = useState({
     network  : 'granadanet',
-    endpoint : 'https://granadanet.smartpy.io',
+    endpoint : 'https://testnet-tezos.giganode.io',
     contract : '',
     show     : false,
   });
