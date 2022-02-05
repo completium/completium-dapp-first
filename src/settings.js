@@ -1,11 +1,11 @@
-import { useState } from 'react';
 import constate from "constate";
+import { useState } from 'react';
 
 export function useSettings() {
 
   const [settings,setState] = useState({
     network  : 'granadanet',
-    endpoint : 'https://granadanet.smartpy.io',
+    endpoint : 'https://hangzhounet.smartpy.io',
     contract : 'KT1WxUiPL1kG8pRUerL52H3qkbHjXpwnoDHo',
     show     : false,
   });
